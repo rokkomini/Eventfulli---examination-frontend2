@@ -1,0 +1,375 @@
+@use "variables";
+
+@import "./utilities";
+
+@mixin primaryFont() {
+  font: 100% variables.$primaryFont;
+  color: variables.$fourthColor;
+}
+
+@mixin border-round() {
+  border-radius: 5px;
+}
+@mixin grid-template() {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 10px;
+}
+
+body {
+  @include primaryFont();
+  color: variables.$fourthColor;
+  margin: 0;
+}
+//Hero - landingpage
+
+.hero {
+  .container {
+    .hero-image {
+      background-image: url(/images/dimmes\ pink\ cloud.jfif);
+      width: 100%;
+      height: 15em;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      @include border-round();
+      .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3em;
+        font-family: 'Poiret One', cursive;
+      }
+    }
+  }
+}
+
+.grid-2row {
+  @include grid-template();
+  grid-template-rows: 1fr 1fr;
+}
+.grid-item {
+  padding: 20px;
+  background-color: variables.$secondaryColor;
+  border: none;
+  @include border-round();
+}
+
+//Test-sektion
+#grid-wrapper {
+  @include grid-template();
+  grid-template-rows: 1fr 1fr;
+}
+.eventWrapper {
+  position: relative;
+  padding: 20px;
+  background-color: variables.$secondaryColor;
+  border: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  @include border-round();
+  img {
+    max-width: 300px;
+    max-height: 200px;
+    object-fit: cover;
+    @include border-round();
+  }
+  h3 {
+    margin: 1em 0;
+  }
+  h4 {
+    margin: 0;
+  }
+  p {
+    margin: 5px 0;
+  }
+  .gridLinkDiv {
+    background-color: variables.$thirdColor;
+    margin-top: 10px;
+    padding: 5px 0;
+    @include border-round();
+    text-align: center;
+    a {
+      text-decoration: none;
+      display: block;
+      border: none;
+      cursor: pointer;
+      margin: 5px auto;
+      width: 50%;
+      @include primaryFont();
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+.detailPageLink {
+  color: variables.$fourthColor;
+}
+//modal styling
+
+.modal-div {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  .modal-content {
+    margin: 10% auto;
+    width: 60%;
+    background-color: variables.$primaryColor;
+    @include border-round();
+    .modal-header {
+      padding-top: 5px;
+      color: variables.$fourthColor;
+      text-align: center;
+    }
+    .modal-body {
+      padding: 10px 20px;
+      background: #fff;
+    }
+    .modal-footer {
+      color: variables.$fourthColor;
+      padding: 30px;
+      text-align: center;
+    }
+  }
+}
+.close-modal {
+  color: variables.$fourthColor;
+  float: right;
+  font-size: 30px;
+  padding: 10px;
+  padding-right: 15px;
+  &:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+//create events
+.form-container {
+  position: relative;
+  padding: 2em 0;
+  width: 100%;
+  // height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: variables.$secondaryColor;
+  @include border-round();
+}
+
+.form-container:after {
+  content: "";
+  background-color: variables.$primaryColor;
+  background-size: cover;
+  z-index: -1;
+}
+
+.contact-box {
+  max-width: 850px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  .left {
+    height: 100%;
+    & img {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      //background: url(https://images.unsplash.com/photo-1586769852351-8791d2bb43be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80) ;
+      object-fit: cover;
+      @include border-round();
+    }
+  }
+  .right {
+    padding: 0 2em;
+    .field {
+      width: 100%;
+      padding: 1em 1em;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      outline: none;
+      background-color: variables.$primaryColor;
+      @include primaryFont();
+      @include border-round();
+      &:focus {
+        outline: pink solid 1px;
+      }
+    }
+    .select-field {
+      margin-top: 1em;
+      width: 100%;
+    }
+    .submit-button {
+      border: none;
+      background-color: variables.$primaryColor;
+      float: right;
+      padding: 1em 2em;
+      @include border-round();
+      cursor: pointer;
+      @include primaryFont();
+      font-weight: bold;
+      color: variables.$fourthColor;
+      &:hover {
+        color: variables.$thirdColor;
+      }
+    }
+  }
+}
+
+.hiddenSubmitMessage {
+  background-color: variables.$secondaryColor;
+  @include border-round();
+  padding: 1em 3em;
+}
+
+//'Upload image' buttons
+.image-input {
+  display: flex;
+  width: 100%;
+  .file-field {
+    width: 9em;
+    &:hover {
+      color: variables.$thirdColor;
+    }
+  }
+}
+
+.file-field::before {
+  content: "Upload image";
+  display: inline-block;
+  background-color: variables.$primaryColor;
+  border-radius: 3px;
+  padding: 5px 8px;
+  margin: 0.5em 1em;
+  outline: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+
+//About us - hero
+
+.grid-3rows {
+  display: grid;
+  grid-template-rows: 2em, 5em, 5em, 1em;
+  .grid-row {
+    padding: 0 10em;
+    margin-bottom: 5px;
+    & h3 {
+      border-bottom: variables.$thirdColor solid 1px;
+    }
+    & p {
+      font-size: 1em;
+    }
+    .group-image {
+      width: 400px;
+      height: 200px;
+      object-fit: cover;
+      overflow: hidden;
+      float: left;
+      padding-right: 20px;
+      @include border-round();
+    }
+  }
+}
+
+.card {
+  width: 200px;
+  float: right;
+  @include border-round();
+  padding: 10px;
+  background-color: variables.$primaryColor;
+  & img {
+    object-fit: cover;
+    width: 200px;
+    height: 170px;
+    @include border-round();
+  }
+  & h4,
+  h5 {
+    margin: 5px 0;
+  }
+  .card-contactbox {
+    background-color: variables.$fourthColor;
+    color: variables.$primaryColor;
+    padding: 5px 15px;
+    @include border-round();
+    & h5 {
+      text-align: center;
+    }
+    & table {
+      border-spacing: 10px;
+    }
+
+    a,
+    & td {
+      font-size: 13px;
+      text-decoration: none;
+      color: variables.$primaryColor;
+    }
+  }
+}
+
+//detail page
+
+.image-grid {
+  display: grid;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  .detail-image {
+    position: relative;
+    width: 250px;
+  }
+}
+
+.program-table {
+  table {
+    width: 100%;
+    background: variables.$secondaryColor;
+    @include border-round();
+    border-spacing: 20px;
+    padding: 1em;
+    margin: 2em auto;
+
+    th,
+    td {
+      border-bottom: white solid;
+      text-align: left;
+    }
+  }
+}
+
+.detail-info-table {
+  float: right;
+  margin-left: 2em;
+  background: variables.$secondaryColor;
+  padding: 1em;
+  text-align: left;
+  border-spacing: 20px;
+  @include border-round();
+
+  & th,
+  td {
+    border: none;
+    padding: 2px 5px;
+  }
+}

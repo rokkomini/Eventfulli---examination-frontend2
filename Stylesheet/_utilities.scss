@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5px 0;
+  position: relative;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+// Universal Navbar
+.navbar {
+  background-color: variables.$primaryColor;
+  width: 100vw;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
+  .nav-header {
+    text-decoration: none;
+    color: variables.$fourthColor;
+    font-family: "Poiret One", cursive;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li {
+      padding: 0 5px;
+      margin: 0 5px;
+      a {
+        text-decoration: none;
+        color: variables.$fourthColor;
+        &:hover {
+          border-bottom: 1px variables.$fourthColor solid;
+        }
+      }
+    }
+  }
+}
+
+.footer-navbar {
+  height: 5em;
+  margin-bottom: 0;
+  overflow: hidden;
+}
