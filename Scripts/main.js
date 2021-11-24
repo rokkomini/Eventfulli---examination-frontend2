@@ -28,7 +28,4 @@ $(function () {
     }
   });
 
-/*   $(window).scroll(function(){
-    $('.navbar').addClass('sticky')
-  }) */
 });
